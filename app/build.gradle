@@ -15,7 +15,15 @@ java {
 
 repositories {
 	mavenCentral()
-	mavenLocal()
+        maven {
+		name = 'GitHubPackages'
+		url = uri('https://maven.pkg.github.com/jamie-burns0/quicksort')
+		credentials {
+			username = project.findProperty('gpr.user') ?: System.getenv('PACKAGES_USERNAME')
+			password = project.findProperty('gpr.key') ?: System.getenv('PACKAGES_PERSONAL_ACCESS_TOKEN_CLASSIC')
+		}
+	}
+	// mavenLocal()
 }
 
 dependencies {
