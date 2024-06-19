@@ -6,6 +6,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PACKAGES_USERNAME: ${{ github.repository.owner }}
+      PACKAGES_PERSONAL_ACCESS_TOKEN_CLASSIC: ${{ secrets.PACKAGES_PERSONAL_ACCESS_TOKEN_CLASSIC }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,6 +26,4 @@ jobs:
         run: gradle build
       - name: Publish
         run: gradle publishQuicksortSpringbootPublicationToGitHubPackagesRepository
-        env:
-          PACKAGES_USERNAME: ${{ github.repository.owner }}
-          PACKAGES_PERSONAL_ACCESS_TOKEN_CLASSIC: ${{ secrets.PACKAGES_PERSONAL_ACCESS_TOKEN_CLASSIC }}
+
