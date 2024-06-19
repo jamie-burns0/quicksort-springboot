@@ -40,7 +40,7 @@ tasks.named('test') {
 
 publishing {
 	publications {
-		quicksort-springboot(MavenPublication) {
+		quicksortSpringboot(MavenPublication) {
 			artifactId = 'quicksort-springboot'
 			from components.java
 		}
