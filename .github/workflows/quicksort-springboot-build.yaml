@@ -25,5 +25,5 @@ jobs:
       - name: Build with Gradle 8.7
         run: gradle build
       - name: Publish
-        run: gradle publishQuicksortSpringbootPublicationToGitHubPackagesRepository
+        run: gradle publishQuicksortSpringbootPublicationToGitHubPackagesQuicksortSpringbootRepository
 

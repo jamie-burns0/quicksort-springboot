@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.5'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id 'maven-publish'
 }
 
 group = 'me.jamieburns'
@@ -16,8 +17,8 @@ java {
 repositories {
 	mavenCentral()
         maven {
-		name = 'GitHubPackages'
-		url = uri('https://maven.pkg.github.com/jamie-burns0/quicksort')
+		name = 'GitHubPackagesQuicksortSpringboot'
+		url = uri('https://maven.pkg.github.com/jamie-burns0/quicksort-springboot')
 		credentials {
 			username = project.findProperty('gpr.user') ?: System.getenv('PACKAGES_USERNAME')
 			password = project.findProperty('gpr.key') ?: System.getenv('PACKAGES_PERSONAL_ACCESS_TOKEN_CLASSIC')
@@ -35,4 +36,13 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+publishing {
+	publications {
+		quicksort-springboot(MavenPublication) {
+			artifactId = 'quicksort-springboot'
+			from components.java
+		}
+	}
 }
