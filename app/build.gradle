@@ -8,6 +8,14 @@ plugins {
 group = 'me.jamieburns'
 version = '1.0-SNAPSHOT'
 
+jar {
+	jar.enabled = false
+}
+
+bootJar {
+	archiveBaseName = 'quicksort-springboot'
+}
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
