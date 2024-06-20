@@ -17,8 +17,8 @@ java {
 repositories {
 	mavenCentral()
         maven {
-		name = 'GitHubPackagesQuicksortSpringboot'
-		url = uri('https://maven.pkg.github.com/jamie-burns0/quicksort-springboot')
+		name = 'GitHubPackagesQuicksort'
+		url = uri('https://maven.pkg.github.com/jamie-burns0/quicksort')
 		credentials {
 			username = project.findProperty('gpr.user') ?: System.getenv('PACKAGES_USERNAME')
 			password = project.findProperty('gpr.key') ?: System.getenv('PACKAGES_PERSONAL_ACCESS_TOKEN_CLASSIC')
@@ -44,5 +44,13 @@ publishing {
 			artifactId = 'quicksort-springboot'
 			from components.java
 		}
+	}
+	repositories {
+		maven = 'GitHubPackagesQuicksortSpringboot'
+		url = uri('https://maven.pkg.github.com/jamie-burns0/quicksort-springboot')
+                credentials {
+                        username = project.findProperty('gpr.user') ?: System.getenv('PACKAGES_USERNAME')
+                        password = project.findProperty('gpr.key') ?: System.getenv('PACKAGES_PERSONAL_ACCESS_TOKEN_CLA>
+                }
 	}
 }
