@@ -46,8 +46,9 @@ dependencies {
 configurations {
 	compile.exclude module: 'spring-boot-starter-tomcat'
 	compile.exclude group: 'org.apache.tomcat', module: 'tomcat-embed-core'
-	runtimeClasspath.exclude module: 'spring-boot-starter-tomcat'
-	runtimeClasspath.exclude group: 'org.apache.tomcat', module: 'tomcat-embed-core'
+	buildZipRuntimeClasspath.extendsFrom runtimeClasspath
+	buildZipRuntimeClasspath.exclude module: 'spring-boot-starter-tomcat'
+	buildZipRuntimeClasspath.exclude group: 'org.apache.tomcat', module: 'tomcat-embed-core'
 }
 
 tasks.named('test') {
@@ -58,7 +59,7 @@ task buildZip(type: Zip) {
 	from compileJava
 	from processResources
 	into('lib') {
-		from configurations.runtimeClasspath
+		from configurations.buildZipRuntimeClasspath
 	}
 	archiveBaseName = myArtifactId
 	archiveClassifier = 'aws-lambda'
