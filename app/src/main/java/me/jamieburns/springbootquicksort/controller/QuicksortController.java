@@ -19,7 +19,7 @@ public class QuicksortController {
     private QuicksortService quicksortService;
 
     //@CrossOrigin(origins = "http://localhost:3000", maxAge = 300)
-    @PostMapping("/quicksort", "/prod/quicksort")
+    @PostMapping( {"/quicksort", "/prod/quicksort"})
     List<Integer> quicksort(@RequestBody List<Integer> list) {
         return quicksortService.quicksort(list);
     }
