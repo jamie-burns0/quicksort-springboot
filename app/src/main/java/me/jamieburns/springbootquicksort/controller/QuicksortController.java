@@ -30,7 +30,12 @@ class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/quicksort")
-                .allowedOrigins("*")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("POST")
+                .maxAge( 300 );
+
+        registry.addMapping("/prod/quicksort")
+                .allowedOrigins("http://app.jamieburns.me:3000")
                 .allowedMethods("POST")
                 .maxAge( 300 );
     }
